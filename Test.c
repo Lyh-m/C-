@@ -7,19 +7,23 @@ void Print(int arr[],int n)
 	{
 		printf("%d\t", arr[i]);
 	}printf("\n");
-}
+}             
 int main()
 {
+	int n = 0;
 	srand((unsigned int)time(NULL));
-	int arr[5] = {0};
-	for (int i=0; i < 5;i++)
+	printf("请定义数组的大小：");
+	scanf_s("%d", &n);
+	int *arr = (int*)malloc(sizeof(int) * n);
+	for (int i=0; i < n;i++)
 	{
 		arr[i] = rand() % 100;
 	}
-	Print(arr, 5);
-	for (int i = 0; i < 5 - 1; i++)
+	printf("排序前顺序：");
+	Print(arr, n);
+	for (int i = 0; i < n - 1; i++)
 	{
-		for (int j = 0; j < 5 - i - 1; j++)
+		for (int j = 0; j < n - i - 1; j++)
 		{
 			if (arr[j] < arr[j + 1])
 			{
@@ -29,6 +33,8 @@ int main()
 			}
 		}
 	}
-	Print(arr, 5);
+	printf("排序后顺序：");
+	Print(arr, n);
+	free(arr);
 	return 0;
 }
